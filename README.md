@@ -50,3 +50,23 @@ workbook.save('example.xlsx')
 ```
 
 In this example, we create a new Excel workbook, add a worksheet, add some data to the worksheet, set a password for the Excel file, and save the file as `example.xlsx`.
+
+### Removing a Password from an Existing Excel File
+
+To remove the password from an existing Excel file, use the `remove_password` method provided by the `secure_excel` gem. Here's an example:
+
+```ruby
+require 'secure_excel'
+
+# Create a new Excel workbook
+workbook = SecureExcel::Workbook.new
+
+# Remove the password from the existing Excel file
+workbook.remove_password('example.xlsx')
+```
+
+In this example, we create a new Excel workbook and remove the password from the existing Excel file `example.xlsx`.
+
+## Reference
+
+This gem is based on the [caxlsx](https://github.com/caxlsx/caxlsx) gem.
