@@ -7,12 +7,16 @@ module SecureExcel
       @workbook = @package.workbook
     end
 
-    def add_worksheet(name = 'Sheet1')
-      @workbook.add_worksheet(name: name)
+    def add_worksheet(name = 'Sheet1', password = nil)
+      worksheet = @workbook.add_worksheet(name: name)
+      worksheet.sheet_protection(password) if password
+      worksheet
     end
 
     def set_password(password)
-      @package.workbook.sheet_protection(password)
+      @workbook.worksheets.each do |worksheet|
+        worksheet.sheet_protection(password)
+      end
     end
 
     def save(file_name)

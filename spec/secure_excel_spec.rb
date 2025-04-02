@@ -12,7 +12,7 @@ RSpec.describe SecureExcel::Workbook do
 
   describe '#set_password' do
     it 'sets the password for the Excel file' do
-      workbook.add_worksheet
+      worksheet = workbook.add_worksheet
       workbook.set_password(password)
       workbook.save(file_name)
 
@@ -21,7 +21,7 @@ RSpec.describe SecureExcel::Workbook do
       # Verify that the file is password protected
       protected_workbook = SecureExcel::Workbook.new
       expect {
-        protected_workbook.set_password(password)
+        protected_workbook.add_worksheet(password: password)
         protected_workbook.save(file_name)
       }.to raise_error(Axlsx::Package::Error)
     end
@@ -29,7 +29,7 @@ RSpec.describe SecureExcel::Workbook do
 
   describe '#remove_password' do
     it 'removes the password from the Excel file' do
-      workbook.add_worksheet
+      worksheet = workbook.add_worksheet
       workbook.set_password(password)
       workbook.save(file_name)
 
@@ -41,7 +41,7 @@ RSpec.describe SecureExcel::Workbook do
       # Verify that the file is no longer password protected
       unprotected_workbook = SecureExcel::Workbook.new
       expect {
-        unprotected_workbook.set_password(password)
+        unprotected_workbook.add_worksheet
         unprotected_workbook.save(file_name)
       }.not_to raise_error
     end
