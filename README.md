@@ -67,6 +67,10 @@ workbook.remove_password('example.xlsx')
 
 In this example, we create a new Excel workbook and remove the password from the existing Excel file `example.xlsx`.
 
-## Reference
+### Using the Console
 
-This gem is based on the [caxlsx](https://github.com/caxlsx/caxlsx) gem.
+To use the console file, run the following command:
+
+    $ bin/console
+
+This will load the environment and start an IRB session with the `secure_excel` gem loaded. You can then interact with the gem in the console.
