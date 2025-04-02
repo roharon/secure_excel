@@ -12,7 +12,7 @@ module SecureExcel
     end
 
     def set_password(password)
-      @package.workbook.protect(password)
+      @package.workbook.sheet_protection(password)
     end
 
     def save(file_name)
